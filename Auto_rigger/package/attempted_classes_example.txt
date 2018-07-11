@@ -1,13 +1,22 @@
 import maya.cmds as cmds
 
+# little script I made so that I could test out creating superClasses and subClasses where the initialization arguements of the superClass 
+# would be inherited to the subClass along while simultaneously establishing additional initialization arguements for the subClass
+# on top of the original superClass's initialization arguements, rather than just the subClass inheriting the superClass's arguements.
+
+#regular superClass
 class sanchez(object):
     def __init__(self, name, morty):
 	    self.name = name
 	    self.morty = morty 
     def wubalubadubdub(self):
         print("wubalubadubdub")
+
+#subClass
 class rick(sanchez):
+#define the init
     def __init__(self, dimension, name, morty):
+#use the super method on the init to link the name and morty arguements to the superClass
         super(rick, self).__init__(name, morty)
         self.dimension = dimension
     
