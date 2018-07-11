@@ -1,7 +1,0 @@
-L_FR_heel.rotateX = L_foot_ctl.heel_roll *5;
-L_FR_ball.rotateX = L_foot_ctl.ball_roll *5;
-L_FR_toe.rotateX = L_foot_ctl.toe_roll *5;
-
-R_FR_heel.rotateX = R_foot_ctl.heel_roll *5;
-R_FR_ball.rotateX = R_foot_ctl.ball_roll *5;
-R_FR_toe.rotateX = R_foot_ctl.toe_roll *5;

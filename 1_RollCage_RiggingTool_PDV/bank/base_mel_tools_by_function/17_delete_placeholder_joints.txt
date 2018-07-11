@@ -1,4 +1,0 @@
-string $placeHolderJoint = "INSERT PLACE HOLDER ARRAY VARIABLE HERE";
-
-select $placeHolderJoint;
-doDelete;

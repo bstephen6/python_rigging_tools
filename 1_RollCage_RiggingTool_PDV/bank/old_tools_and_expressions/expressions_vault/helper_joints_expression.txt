@@ -1,7 +1,0 @@
-L_shoulder_locator_1.rotateX = L_shoulder_ctl.rotateX *.25;
-L_shoulder_locator_2.rotateX = L_shoulder_ctl.rotateX *.5;
-L_shoulder_locator_3.rotateX = L_shoulder_ctl.rotateX *.75;
-
-R_shoulder_locator_1.rotateX = R_shoulder_ctl.rotateX *.25;
-R_shoulder_locator_2.rotateX = R_shoulder_ctl.rotateX *.5;
-R_shoulder_locator_3.rotateX = R_shoulder_ctl.rotateX *.75;

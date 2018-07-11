@@ -1,4 +1,0 @@
-spine_1_stretch_group.translateY = stetchy_spine_ctl.translateY *1;
-spine_2_stretch_group.translateY = stetchy_spine_ctl.translateY *2;
-spine_3_stretch_group.translateY = stetchy_spine_ctl.translateY *3;
-spine_3_stretch_group.translateY = stetchy_spine_ctl.translateY *4;

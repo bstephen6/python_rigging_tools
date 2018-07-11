@@ -1,2 +1,0 @@
-select -r ("INSERT CTL CURVE ARRAY") ;
-FreezeTransformations;
