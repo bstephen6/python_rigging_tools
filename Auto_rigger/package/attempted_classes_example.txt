@@ -24,7 +24,7 @@ class rick(sanchez):
         #super(rick, self).wubalubadubdub()
 
 
-tinyrick = rick(dimension = "c137", name = "tinyRick", morty = "burlapsackofturds")
+tinyrick = rick(dimension = "c137", name = "tinyRick", morty = "hammerMorty")
 
 print(tinyrick.name)
 print(tinyrick.dimension)
