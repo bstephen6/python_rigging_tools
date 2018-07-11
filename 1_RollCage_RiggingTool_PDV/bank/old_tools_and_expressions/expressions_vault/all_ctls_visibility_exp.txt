@@ -1,0 +1,82 @@
+L_thumb_ctl_1.visibility = L_hand_ctl.ctrls_visible;
+L_thumb_ctl_2.visibility = L_hand_ctl.ctrls_visible;
+L_thumb_ctl_3.visibility = L_hand_ctl.ctrls_visible;
+
+L_index_ctl_1.visibility = L_hand_ctl.ctrls_visible;
+L_index_ctl_2.visibility = L_hand_ctl.ctrls_visible;
+L_index_ctl_3.visibility = L_hand_ctl.ctrls_visible;
+
+L_middle_ctl_1.visibility = L_hand_ctl.ctrls_visible;
+L_middle_ctl_2.visibility = L_hand_ctl.ctrls_visible;
+L_middle_ctl_3.visibility = L_hand_ctl.ctrls_visible;
+
+L_ring_ctl_1.visibility = L_hand_ctl.ctrls_visible;
+L_ring_ctl_2.visibility = L_hand_ctl.ctrls_visible;
+L_ring_ctl_3.visibility = L_hand_ctl.ctrls_visible;
+
+L_pinky_ctl_1.visibility = L_hand_ctl.ctrls_visible;
+L_pinky_ctl_2.visibility = L_hand_ctl.ctrls_visible;
+L_pinky_ctl_3.visibility = L_hand_ctl.ctrls_visible;
+
+
+
+R_thumb_ctl_1.visibility = R_hand_ctl.ctrls_visible;
+R_thumb_ctl_2.visibility = R_hand_ctl.ctrls_visible;
+R_thumb_ctl_3.visibility = R_hand_ctl.ctrls_visible;
+
+R_index_ctl_1.visibility = R_hand_ctl.ctrls_visible;
+R_index_ctl_2.visibility = R_hand_ctl.ctrls_visible;
+R_index_ctl_3.visibility = R_hand_ctl.ctrls_visible;
+
+R_middle_ctl_1.visibility = R_hand_ctl.ctrls_visible;
+R_middle_ctl_2.visibility = R_hand_ctl.ctrls_visible;
+R_middle_ctl_3.visibility = R_hand_ctl.ctrls_visible;
+
+R_ring_ctl_1.visibility = R_hand_ctl.ctrls_visible;
+R_ring_ctl_2.visibility = R_hand_ctl.ctrls_visible;
+R_ring_ctl_3.visibility = R_hand_ctl.ctrls_visible;
+
+R_pinky_ctl_1.visibility = R_hand_ctl.ctrls_visible;
+R_pinky_ctl_2.visibility = R_hand_ctl.ctrls_visible;
+R_pinky_ctl_3.visibility = R_hand_ctl.ctrls_visible;
+
+T_mouth_ctl.visibility = jaw_ctl.ctrls_visible;
+B_mouth_ctl.visibility = jaw_ctl.ctrls_visible;
+
+L_eyebrow_ctl_1.visibility = L_eyebrow_parent_ctl.ctrls_visible;
+L_eyebrow_ctl_2.visibility = L_eyebrow_parent_ctl.ctrls_visible;
+L_eyebrow_ctl_3.visibility = L_eyebrow_parent_ctl.ctrls_visible;
+
+L_nostril_ctl_2.visibility = L_nostril_ctl_1.secondary_ctrls_visible;
+
+
+L_muzzle_ctl.visibility = jaw_ctl.ctrls_visible;
+L_mouth_corner_ctl.visibility = jaw_ctl.ctrls_visible;
+L_T_mouth_side_ctl.visibility = jaw_ctl.ctrls_visible;
+L_B_mouth_side_ctl.visibility = jaw_ctl.ctrls_visible;
+
+L_eyelid_ctl_1.visibility = L_eye_ctl.ctrls_visible;
+L_eyelid_ctl_2.visibility = L_eye_ctl.ctrls_visible;
+L_eyelid_ctl_3.visibility = L_eye_ctl.ctrls_visible;
+L_eyelid_ctl_4.visibility = L_eye_ctl.ctrls_visible;
+
+
+
+
+R_eyebrow_ctl_1.visibility = R_eyebrow_parent_ctl.ctrls_visible;
+R_eyebrow_ctl_2.visibility = R_eyebrow_parent_ctl.ctrls_visible;
+R_eyebrow_ctl_3.visibility = R_eyebrow_parent_ctl.ctrls_visible;
+
+R_nostril_ctl_2.visibility = R_nostril_ctl_1.secondary_ctrls_visible;
+
+
+R_muzzle_ctl.visibility = jaw_ctl.ctrls_visible;
+R_mouth_corner_ctl.visibility = jaw_ctl.ctrls_visible;
+R_T_mouth_side_ctl.visibility = jaw_ctl.ctrls_visible;
+R_B_mouth_side_ctl.visibility = jaw_ctl.ctrls_visible;
+
+
+R_eyelid_ctl_1.visibility = R_eye_ctl.ctrls_visible;
+R_eyelid_ctl_2.visibility = R_eye_ctl.ctrls_visible;
+R_eyelid_ctl_3.visibility = R_eye_ctl.ctrls_visible;
+R_eyelid_ctl_4.visibility = R_eye_ctl.ctrls_visible;

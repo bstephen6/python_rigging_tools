@@ -1,0 +1,8 @@
+file -import -type "mayaBinary"  -ignoreVersion -ra true -mergeNamespacesOnClash false -namespace "PUT NAMESPACE HERE" -options "v=0;"  -pr "PUT FILE PATH HERE";
+
+namespace -mv "INSERT NAME SPACE HERE" ":" -force;
+
+move -rpr 0 0 0 ;
+
+#For the namespace expect it to be the import file name // cache it and put it in the name space and the namespace deletion
+#move to the center of the scene

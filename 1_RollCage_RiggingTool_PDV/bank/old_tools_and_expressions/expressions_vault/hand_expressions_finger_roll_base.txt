@@ -1,0 +1,53 @@
+L_index_ctl_1_group.rotateY = -8.002 + L_hand_ctl.index_spread *5;
+L_middle_ctl_1_group.rotateY = 0 + L_hand_ctl.middle_spread *5;
+L_ring_ctl_1_group.rotateY = 9.157 + L_hand_ctl.ring_spread *5;
+L_pinky_ctl_1_group.rotateY = 9.84 + L_hand_ctl.pinky_spread *5;
+L_thumb_ctl_1_group.rotateY = -44.158 + L_hand_ctl.thumb_spread *5;
+
+R_index_ctl_1_group.rotateY = 171.998 + R_hand_ctl.index_spread *5;
+R_middle_ctl_1_group.rotateY = 180 + R_hand_ctl.middle_spread *5;
+R_ring_ctl_1_group.rotateY = 189.157 + R_hand_ctl.ring_spread *5;
+R_pinky_ctl_1_group.rotateY = 189.84 + R_hand_ctl.pinky_spread *5;
+R_thumb_ctl_1_group.rotateY = 135.842 + R_hand_ctl.thumb_spread *5;
+
+
+
+L_pinky_roll_1_group.rotateZ = L_hand_ctl.pinky_roll *-8; 
+L_pinky_roll_2_group.rotateZ = L_hand_ctl.pinky_roll *-10; 
+L_pinky_roll_3_group.rotateZ = L_hand_ctl.pinky_roll *-10;
+
+L_ring_roll_1_group.rotateZ = L_hand_ctl.ring_roll *-8; 
+L_ring_roll_2_group.rotateZ = L_hand_ctl.ring_roll *-10; 
+L_ring_roll_3_group.rotateZ = L_hand_ctl.ring_roll *-10;
+
+L_middle_roll_1_group.rotateZ = L_hand_ctl.middle_roll *-8; 
+L_middle_roll_2_group.rotateZ = L_hand_ctl.middle_roll *-10; 
+L_middle_roll_3_group.rotateZ = L_hand_ctl.middle_roll *-10;
+
+L_index_roll_1_group.rotateZ = L_hand_ctl.index_roll *-8; 
+L_index_roll_2_group.rotateZ = L_hand_ctl.index_roll *-10; 
+L_index_roll_3_group.rotateZ = L_hand_ctl.index_roll *-10;
+
+L_thumb_roll_1_group.rotateZ = L_hand_ctl.thumb_roll *-8; 
+L_thumb_roll_2_group.rotateZ = L_hand_ctl.thumb_roll *-10; 
+L_thumb_roll_3_group.rotateZ = L_hand_ctl.thumb_roll *-10;
+
+R_pinky_roll_1_group.rotateZ = R_hand_ctl.pinky_roll *-8; 
+R_pinky_roll_2_group.rotateZ = R_hand_ctl.pinky_roll *-10; 
+R_pinky_roll_3_group.rotateZ = R_hand_ctl.pinky_roll *-10;
+
+R_ring_roll_1_group.rotateZ = R_hand_ctl.ring_roll *-8; 
+R_ring_roll_2_group.rotateZ = R_hand_ctl.ring_roll *-10; 
+R_ring_roll_3_group.rotateZ = R_hand_ctl.ring_roll *-10;
+
+R_middle_roll_1_group.rotateZ = R_hand_ctl.middle_roll *-8; 
+R_middle_roll_2_group.rotateZ = R_hand_ctl.middle_roll *-10; 
+R_middle_roll_3_group.rotateZ = R_hand_ctl.middle_roll *-10;
+
+R_index_roll_1_group.rotateZ = R_hand_ctl.index_roll *-8; 
+R_index_roll_2_group.rotateZ = R_hand_ctl.index_roll *-10; 
+R_index_roll_3_group.rotateZ = R_hand_ctl.index_roll *-10;
+
+R_thumb_roll_1_group.rotateZ = R_hand_ctl.thumb_roll *-8; 
+R_thumb_roll_2_group.rotateZ = R_hand_ctl.thumb_roll *-10; 
+R_thumb_roll_3_group.rotateZ = R_hand_ctl.thumb_roll *-10;

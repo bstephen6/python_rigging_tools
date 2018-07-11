@@ -1,0 +1,109 @@
+User end steps in maya:
+lay joints
+
+	!!!! even specialty joints !!!!! ( wing, helpers, expression ctl placeholder joints)
+
+rotate them
+
+Steps:
+
+	SETTING UP FOR CTL RIG:
+
+		1* import ctl files ( WILL LIST LATER)
+			need list:
+
+		2* change names ( change-able in program)
+
+		3* scale Ctls
+
+		4* Duplicated for the desired amount of joints per ctl
+
+		5* Snap all joints except feet ctls to the joints with the precurser name
+		
+		6* Move Foot CTLs to ankle position in X and Z channels
+	
+		6.5* snap foot ctl pivot to ankle Joint 
+
+		
+		7* put the joints in the correct hierarchy
+
+
+		8* take all joints rotations and change them to the orientations
+		
+		
+		9* mirror any side specific joints (for tool there should be symetrical checkbox for this)
+		
+
+		10* duplicate, rename, and Snap pivots any side specific ctls ( this also works on the symetrical checkbox)
+	
+
+		11* Freeze all ctls
+
+	
+		12* group , rename groups, and Snap pivots of all ctl to their proper joints
+		
+
+		13* take joint orients and make them the ctl group rotations 
+		
+
+		14* mirror right side ctls through the ctl group rotation of 180 degrees in certain channels
+			elbow: 180 on y : freeze and then 180 on x on group
+
+		15* create attributes for all specialties 
+
+
+		16* (create specialties) WITHOUT EXPRESSIONS [BREAK THIS UP INTO STEPS] !! -> [Give Variables to change the channels expressions operate on]
+					16.1* foot rolls **
+					16.2* Wings and Flap
+					16.3* helper joints
+					16.4* IK handles    **(UPDATE! : this should go before joint mirroring!)
+					16.5 IK/fk Switches (UPDATE! : go back and make a version that works without having shoulder helper joints)
+					16.6  STRETCHY SPINE! **
+
+					16.7  Hair Dynamics
+					16.8  Weapon Switcher
+					16.9  Root Switcher
+					
+
+     		 			Hide all locators at the end of this
+
+		17* Delete placeholder joints 
+
+		18* lock attributes on the expressions ctls ( make a check list of what to lock in the programm)
+
+			(maybe stick all the expression ctl curves into an array and perform for every object in array)
+
+
+		19* put ctls into proper hierarchy
+
+		20* Add expressions ( variables taken from ctl group info) 
+
+		21* Constraint joints and ctls
+
+		22* select all joints exempting the base and root joints
+
+		23* select mesh and bind skin with 3 influences
+		
+		
+
+	
+
+		
+		ideas: make a changeable variable for th
+
+IDEA FOR PYTHON FUNCTION!!!!:
+for there to be an edit size of joint CTLS button that undo's everything just done by the python code and than
+to perform the same actions except with the change of handle sizes
+
+
+
+
+
+
+
+COLORS for override
+RED - 13
+BLUE - 6
+YELLOW - 17
+GREEN - 14
+PURPLE - 9

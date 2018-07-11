@@ -1,0 +1,21 @@
+import maya.cmds as cmds
+
+mirrorArray = cmds.ls(sl=True)
+print (mirrorArray)
+
+ctlArray = cmds.ls( type ='nurbsCurve')
+	
+for center in ctlArray:
+    print(center)
+    cmds.setAttr(center + '.overrideEnabled', 1)
+    cmds.setAttr(center + '.overrideColor', 17)
+    freezeTar = cmds.listRelatives( center, allParents=True )
+    cmds.makeIdentity(freezeTar, apply=True, s=1,)
+    
+for mirror in mirrorArray:
+   ctlShapes = cmds.listRelatives( mirror, ad = True )
+   cmds.makeIdentity(mirror, apply=True, s=1,)
+   ctlDup = mirror.replace('L_', 'R_')
+   for shapes in ctlShapes:
+       cmds.setAttr(shapes + '.overrideEnabled', 1)
+       cmds.setAttr(shapes + '.overrideColor', 6)

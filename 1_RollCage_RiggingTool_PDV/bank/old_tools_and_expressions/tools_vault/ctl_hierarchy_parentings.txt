@@ -1,0 +1,160 @@
+parent L_thumb_ctl_3_group L_thumb_ctl_2;
+parent L_thumb_ctl_2_group L_thumb_ctl_1;
+parent L_thumb_ctl_1_group L_wrist_ctl ;
+
+
+parent L_index_ctl_3_group L_index_ctl_2;
+parent L_index_ctl_2_group L_index_ctl_1;
+parent L_index_ctl_1_group L_wrist_ctl ;
+
+
+parent L_middle_ctl_3_group L_middle_ctl_2;
+parent L_middle_ctl_2_group L_middle_ctl_1;
+parent L_middle_ctl_1_group L_wrist_ctl ;
+
+
+parent L_ring_ctl_3_group L_ring_ctl_2;
+parent L_ring_ctl_2_group L_ring_ctl_1;
+parent L_ring_ctl_1_group L_wrist_ctl ;
+
+
+parent L_pinky_ctl_3_group L_pinky_ctl_2;
+parent L_pinky_ctl_2_group L_pinky_ctl_1;
+parent L_pinky_ctl_1_group L_wrist_ctl ;
+
+parent L_hand_ctl_group L_wrist_ctl ;
+
+parent L_wrist_ctl_group L_elbow_ctl ;
+parent L_elbow_ctl_group L_shoulder_ctl ;
+parent L_shoulder_ctl_group L_clav_ctl ;
+parent L_clav_ctl_group spine_ctl_4 ;
+
+
+parent L_muzzle_ctl_group head_ctl ;
+parent L_cheek_ctl_group head_ctl ;
+
+
+parent L_B_mouth_side_ctl_group jaw_ctl ;
+
+
+parent L_T_mouth_side_ctl_group head_ctl ;
+parent L_mouth_corner_ctl_group head_ctl ;
+
+
+parent L_nostril_ctl_2_group head_ctl ;
+parent L_nostril_ctl_1_group head_ctl ;
+
+
+parent L_eyelid_ctl_4_group head_ctl ;
+parent L_eyelid_ctl_3_group head_ctl ;
+parent L_eyelid_ctl_2_group head_ctl ;
+parent L_eyelid_ctl_1_group head_ctl ;
+
+
+parent L_eyebrow_ctl_3_group head_ctl ;
+parent L_eyebrow_ctl_2_group head_ctl ;
+parent L_eyebrow_ctl_1_group head_ctl ;
+
+
+parent L_eyebrow_parent_ctl_group head_ctl ;
+parent L_ear_ctl_group head_ctl ;
+
+
+parent L_eye_ctl_group eyes_parent_ctl ;
+
+
+
+
+
+
+
+parent R_thumb_ctl_3_group R_thumb_ctl_2;
+parent R_thumb_ctl_2_group R_thumb_ctl_1;
+parent R_thumb_ctl_1_group R_wrist_ctl ;
+
+
+parent R_index_ctl_3_group R_index_ctl_2;
+parent R_index_ctl_2_group R_index_ctl_1;
+parent R_index_ctl_1_group R_wrist_ctl ;
+
+
+parent R_middle_ctl_3_group R_middle_ctl_2;
+parent R_middle_ctl_2_group R_middle_ctl_1;
+parent R_middle_ctl_1_group R_wrist_ctl ;
+
+
+parent R_ring_ctl_3_group R_ring_ctl_2;
+parent R_ring_ctl_2_group R_ring_ctl_1;
+parent R_ring_ctl_1_group R_wrist_ctl ;
+
+
+parent R_pinky_ctl_3_group R_pinky_ctl_2;
+parent R_pinky_ctl_2_group R_pinky_ctl_1;
+parent R_pinky_ctl_1_group R_wrist_ctl ;
+
+parent R_hand_ctl_group R_wrist_ctl ;
+
+parent R_wrist_ctl_group R_elbow_ctl ;
+parent R_elbow_ctl_group R_shoulder_ctl ;
+parent R_shoulder_ctl_group R_clav_ctl ;
+parent R_clav_ctl_group spine_ctl_4 ;
+
+
+parent R_muzzle_ctl_group head_ctl ;
+parent R_cheek_ctl_group head_ctl ;
+
+
+parent R_B_mouth_side_ctl_group jaw_ctl ;
+
+parent R_T_mouth_side_ctl_group head_ctl ;
+parent R_mouth_corner_ctl_group head_ctl ;
+
+
+parent R_nostril_ctl_2_group head_ctl ;
+parent R_nostril_ctl_1_group head_ctl ;
+
+
+parent R_eyelid_ctl_4_group head_ctl ;
+parent R_eyelid_ctl_3_group head_ctl ;
+parent R_eyelid_ctl_2_group head_ctl ;
+parent R_eyelid_ctl_1_group head_ctl ;
+
+
+parent R_eyebrow_ctl_3_group head_ctl ;
+parent R_eyebrow_ctl_2_group head_ctl ;
+parent R_eyebrow_ctl_1_group head_ctl ;
+
+
+parent R_eyebrow_parent_ctl_group head_ctl ;
+parent R_ear_ctl_group head_ctl ;
+
+
+parent R_eye_ctl_group eyes_parent_ctl ;
+
+
+parent T_mouth_ctl_group head_ctl ;
+
+parent B_mouth_ctl_group jaw_ctl ;
+
+
+parent jaw_ctl_group head_ctl ;
+
+
+parent head_ctl_group neck_ctl ;
+parent neck_ctl_group spine_ctl_4 ;
+
+
+parent spine_1_base_group stetchy_spine_ctl ;
+parent spine_2_base_group stetchy_spine_ctl ;
+parent spine_3_base_group stetchy_spine_ctl ;
+parent spine_4_base_group stetchy_spine_ctl ;
+parent stetchy_spine_ctl root_ctl ;
+
+
+parent hip_ctl root_ctl ;
+parent root_ctl base_ctl ;
+parent eyes_parent_ctl_group base_ctl ;
+parent L_knee_ctl base_ctl ;
+parent R_knee_ctl base_ctl ;
+parent L_foot_ctl_group base_ctl ;
+parent R_foot_ctl_group base_ctl ;

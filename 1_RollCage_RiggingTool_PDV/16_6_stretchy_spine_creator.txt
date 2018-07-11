@@ -1,0 +1,211 @@
+
+string $masterStretchCtl = "stretchy_spine_ctl";
+
+string $spineA = "spine_1" ;
+string $spineCtlA = ($spineA + "_ctl" );
+string $spineCtlBaseGroupA = ($spineA + "_base_group" );
+string $spineCtlStretchGroupA = ($spineA + "_stretch_group" );
+vector $spineASnapLoc = `xform -q -ws -t $spineA`;
+
+string $spineB = "spine_2" ;
+string $spineCtlB = ($spineB + "_ctl" );
+string $spineCtlBaseGroupB = ($spineB + "_base_group" );
+string $spineCtlStretchGroupB = ($spineB + "_stretch_group" );
+vector $spineBSnapLoc = `xform -q -ws -t $spineB`;
+
+string $spineC = "spine_3" ;
+string $spineCtlC = ($spineC + "_ctl" );
+string $spineCtlBaseGroupC = ($spineC + "_base_group" );
+string $spineCtlStretchGroupC = ($spineC + "_stretch_group" );
+vector $spineCSnapLoc = `xform -q -ws -t $spineC`;
+
+string $spineD = "spine_4" ;
+string $spineCtlD = ($spineD + "_ctl" );
+string $spineCtlBaseGroupD = ($spineD + "_base_group" );
+string $spineCtlStretchGroupD = ($spineD + "_stretch_group" );
+vector $spineDSnapLoc = `xform -q -ws -t $spineD`;
+
+
+select -r $spineCtlA;
+doGroup 0 1 1;
+rename "group1" $spineCtlStretchGroupA;
+select -cl;
+
+select -r $spineCtlStretchGroupA ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineASnapLoc.x) ($spineASnapLoc.y) ($spineASnapLoc.z) ($spineCtlStretchGroupA + ".scalePivot") ($spineCtlStretchGroupA + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlStretchGroupA;
+doGroup 0 1 1;
+rename "group1" $spineCtlBaseGroupA;
+select -cl;
+
+select -r $spineCtlBaseGroupA ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineASnapLoc.x) ($spineASnapLoc.y) ($spineASnapLoc.z) ($spineCtlBaseGroupA + ".scalePivot") ($spineCtlBaseGroupA + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlB;
+doGroup 0 1 1;
+rename "group1" $spineCtlStretchGroupB;
+select -cl;
+
+select -r $spineCtlStretchGroupB ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineBSnapLoc.x) ($spineBSnapLoc.y) ($spineBSnapLoc.z) ($spineCtlStretchGroupB + ".scalePivot") ($spineCtlStretchGroupB + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlStretchGroupB;
+doGroup 0 1 1;
+rename "group1" $spineCtlBaseGroupB;
+select -cl;
+
+select -r $spineCtlBaseGroupB ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineBSnapLoc.x) ($spineBSnapLoc.y) ($spineBSnapLoc.z) ($spineCtlBaseGroupB + ".scalePivot") ($spineCtlBaseGroupB + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlC;
+doGroup 0 1 1;
+rename "group1" $spineCtlStretchGroupC;
+select -cl;
+
+select -r $spineCtlStretchGroupC ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineCSnapLoc.x) ($spineCSnapLoc.y) ($spineCSnapLoc.z) ($spineCtlStretchGroupC + ".scalePivot") ($spineCtlStretchGroupC + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlStretchGroupC;
+doGroup 0 1 1;
+rename "group1" $spineCtlBaseGroupC;
+select -cl;
+
+select -r $spineCtlBaseGroupC ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineCSnapLoc.x) ($spineCSnapLoc.y) ($spineCSnapLoc.z) ($spineCtlBaseGroupC + ".scalePivot") ($spineCtlBaseGroupC + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $spineCtlD;
+doGroup 0 1 1;
+rename "group1" $spineCtlStretchGroupD;
+select -cl;
+
+select -r $spineCtlStretchGroupD ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineDSnapLoc.x) ($spineDSnapLoc.y) ($spineDSnapLoc.z) ($spineCtlStretchGroupD + ".scalePivot") ($spineCtlStretchGroupD + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $spineCtlStretchGroupD;
+doGroup 0 1 1;
+rename "group1" $spineCtlBaseGroupD;
+select -cl;
+
+select -r $spineCtlBaseGroupD ;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($spineDSnapLoc.x) ($spineDSnapLoc.y) ($spineDSnapLoc.z) ($spineCtlBaseGroupD + ".scalePivot") ($spineCtlBaseGroupD + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $spineCtlA ;
+select -tgl $spineCtlBaseGroupB ;
+
+performParentConstraint 1;
+doCreateParentConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+parentConstraint -mo -weight 1;
+
+select -cl;
+
+select -r $spineCtlB ;
+select -tgl $spineCtlBaseGroupC ;
+
+performParentConstraint 1;
+doCreateParentConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+parentConstraint -mo -weight 1;
+
+select -cl;
+
+
+select -r $spineCtlC ;
+select -tgl $spineCtlBaseGroupD ;
+
+
+performParentConstraint 1;
+doCreateParentConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+parentConstraint -mo -weight 1;
+
+select -cl;
+
+parent $spineCtlBaseGroupA $masterStretchCtl ;
+parent $spineCtlBaseGroupB $masterStretchCtl ;
+parent $spineCtlBaseGroupC $masterStretchCtl ;
+parent $spineCtlBaseGroupD $masterStretchCtl ;
+
+
+
+transformLimits -tx -1 1 -etx 1 0 $masterStretchCtl;
+transformLimits -tx 0 1 -etx 1 0 $masterStretchCtl;
+
+transformLimits -tx 0 1 -etx 1 1 $masterStretchCtl;
+transformLimits -tx 0 0 -etx 1 1 $masterStretchCtl;
+
+
+transformLimits -tz -1 1 -etz 1 0 $masterStretchCtl;
+transformLimits -tz 0 1 -etz 1 0 $masterStretchCtl;
+
+
+transformLimits -tz 0 1 -etz 1 1 $masterStretchCtl;
+transformLimits -tz 0 0 -etz 1 1 $masterStretchCtl;
+
+
+
+transformLimits -ty -1 1 -ety 1 0 $masterStretchCtl;
+transformLimits -ty 0 1 -ety 1 0 $masterStretchCtl;
+transformLimits -ty 0 1 -ety 1 1 $masterStretchCtl;
+
+

@@ -1,0 +1,8 @@
+import maya.cmds as cmds
+import helloscript
+
+window = cmds.window(title = "myWindow", widthHeight = (200,200))
+cmds.rowColumnLayout(numberOfColumns = 1, columnWidth = [(1,100)])
+cmds.button(label= "say hello", command = 'helloscript.helloFunction()', width = 100)
+cmds.button(label= 'close', command = ('cmds.deleteUI(\"' + window + '\", window = True)') )
+cmds.showWindow(window)

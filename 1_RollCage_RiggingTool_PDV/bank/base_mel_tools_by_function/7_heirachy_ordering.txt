@@ -1,0 +1,4 @@
+string $socket= "joint1";
+string $gem = "joint2" ;
+
+parent $gem $socket ;

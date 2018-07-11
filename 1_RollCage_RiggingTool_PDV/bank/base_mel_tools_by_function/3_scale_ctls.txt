@@ -1,0 +1,6 @@
+string $ctlCurve = "INSERT CTL NAME";
+int $scaleAmount = INSERT SCALE HERE;
+
+setAttr ( $ctlCurve + ".scaleX") $scaleAmount;
+setAttr ( $ctlCurve + ".scaleY") $scaleAmount;
+setAttr ( $ctlCurve + ".scaleZ") $scaleAmount;

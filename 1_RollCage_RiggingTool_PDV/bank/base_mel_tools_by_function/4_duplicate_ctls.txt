@@ -1,0 +1,3 @@
+string $ctlCurve = "box1";
+
+duplicate $ctlCurve;

@@ -1,0 +1,5 @@
+string $ctlName = "INSERT CTL NAME VARIABLE HERE";
+string $jointName = "INSERT JOINT NAME VARIABLE HERE";
+string $newCtlName = ($jointName + "_ctl"); 
+
+rename $ctlName $newCtlName;

@@ -1,0 +1,40 @@
+import maya.cmds as cmds
+import jointLocators
+import jointMaker
+import ctlMaker
+import ctlCleaner
+import conAndBind
+
+window = cmds.window(title = "myWindow", widthHeight = (469,220))
+cmds.rowColumnLayout(numberOfColumns = 3, columnWidth = [(1, 150), (1, 150), (1, 150)])
+cmds.text(label = '', width = 150)
+cmds.button(label = "Create Joint Locators", command = 'jointLocators.importLocators()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "Create Skeleton From Locators", command = 'jointMaker.makeJoints()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = 'Ctl Makers:', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "Cube Ctl", command = 'ctlMaker.makeCube()')
+cmds.button(label = "Sphere Ctl", command = 'ctlMaker.makeSphere()')
+cmds.button(label = "Circle Ctl", command = 'ctlMaker.makeCircle()')
+cmds.button(label = "Base Ctl", command = 'ctlMaker.makeBase()')
+cmds.button(label = "Dumbell Ctl", command = 'ctlMaker.makeDumbell()')
+cmds.button(label = "Foot Ctl", command = 'ctlMaker.makeFoot()')
+cmds.button(label = "finger Ctl", command = 'ctlMaker.makeFinger()')
+cmds.button(label = "Head Ctl", command = 'ctlMaker.makeHead()')
+cmds.button(label = "diamond Ctl", command = 'ctlMaker.makeDiamond()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+#cmds.button(label= "Create Ctls", command = 'ctlMaker.makeCtls()', width = 200)
+cmds.button(label= "Mirror and Clean Ctls", command = 'ctlCleaner.ctlCleaning()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label= "Constrain Ctls and Bind Skin", command = 'conAndBind.conAndBinding()')
+cmds.text(label = '', width=150)
+cmds.text(label = '', width = 150)
+cmds.button(label= 'close', command = ('cmds.deleteUI(\"' + window + '\", window = True)') )
+cmds.showWindow(window)

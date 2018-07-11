@@ -1,0 +1,18 @@
+string $ctlCurveTarget = "INSERT CTL NAME";
+string $jointTarget = "INSERT TARGET JOINT NAME HERE";
+vector $jointTargetLoc=`xform -q -ws -t $jointTarget`;
+
+
+setAttr ( $ctlCurveTarget + ".translateX" ) ($jointTargetLoc.x);
+setAttr ( $ctlCurveTarget + ".translateZ" ) ($jointTargetLoc.z);
+
+
+select -r $ctlCurveTarget ;
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointTargetLoc.x) ($jointTargetLoc.y) ($jointTargetLoc.z) ($ctlCurveTarget + ".scalePivot") ($ctlCurveTarget + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl  ;
+
+
+

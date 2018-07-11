@@ -1,0 +1,11 @@
+select -r L_Hand_Ctrl ;
+
+string $ctrlName[] = `ls -sl`;
+
+doGroup 0 1 1;
+
+print ($ctrlName);
+
+$ctrlGroup = ($ctrlName[0] + "_group");
+
+rename "group1" $ctrlGroup;

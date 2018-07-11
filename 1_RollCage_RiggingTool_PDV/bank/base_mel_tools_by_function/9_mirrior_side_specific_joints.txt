@@ -1,0 +1,10 @@
+string $mirrorTarget = "INSERT NAME OF MIRROR JOINT ARRAY HERE";
+string $searchNamePlace = "L_";
+string $replaceNamePlace = "R_";
+string $mirrorDirection = "INSERT DIRECTION LETTERS HERE";
+
+string $mirrorExeLine = ( "mirrorJoint -mirror" + $mirrorDirection + " -mirrorBehavior -searchReplace " + $searchNamePlace + " " + $replaceNamePlace +";");
+
+select -r $mirrorTarget ;
+eval $mirrorExeLine ;
+select -cl  ;

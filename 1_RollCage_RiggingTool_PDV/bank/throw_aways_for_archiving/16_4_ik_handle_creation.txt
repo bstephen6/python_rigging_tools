@@ -1,0 +1,23 @@
+string $ikStart = "INSERT IK STARTING JOINT VAR";
+string $ikKnee = "INSERT IK KNEE JOINT VAR";
+int $kneeRotX = INSERT IK KNEE JOINT ROTATION VAR;
+int $kneeRotY = INSERT IK KNEE JOINT ROTATION VAR;
+int $kneeRotZ = INSERT IK KNEE JOINT ROTATION VAR;
+string $ikEnd = "INSERT IK ENDING JOINT VAR";
+
+select -r $ikKnee ;
+setAttr ( $ikKnee + "rotateX" ) $KneeRotX;
+setAttr ( $ikKnee + "rotateY" ) $KneeRotY;
+setAttr ( $ikKnee + "rotateZ" ) $KneeRotZ;
+joint -e -spa -ch $ikKnee;
+
+setAttr ( $ikKnee + ".rotateX" ) 0;
+setAttr ( $ikKnee + ".rotateY" ) 0;
+setAttr ( $ikKnee + ".rotateZ" ) 0;
+select -cl  ;
+
+IKHandleTool;
+select -r ($ikStart + ".rotatePivot") ;
+select -add ($ikEnd + ".rotatePivot") ;
+ikHandle;
+

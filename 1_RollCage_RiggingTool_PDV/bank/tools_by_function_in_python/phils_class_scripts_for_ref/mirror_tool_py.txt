@@ -1,0 +1,141 @@
+import maya.cmds as cmds
+
+startingJoint = mirror
+jointTarget = ctlDup
+
+mirrorCtlTarget = (startingJoint)
+
+newCtlGroupForRot = (mirrorCtlTarget + "_group")
+
+snapToJointLoc = cmds.xform(startingJoint, q=True, ws=True, t=True)
+ctlCurveGScalePiv = (newCtlGroupForRot + ".scalePivot")
+ctlCurveGRotPiv = (newCtlGroupForRot + ".rotatePivot")
+
+
+ctlGroupRotateTransferXFlipper = float(1)
+ctlGroupRotateTransferYFlipper = float(1)
+ctlGroupRotateTransferZFlipper = float(1)
+
+
+intendedCtlDupName = (jointTarget) 
+mirrorJointTarget = ctlDup.replace('_ctl', '')
+targetLocation = (mirrorJointTarget, q=True, ws=True, t=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+newGroupRotForStartJointX = cmds.getAttr( mirrorCtlTarget + ".rotateX" )
+newGroupRotForStartJointY = cmds.getAttr( mirrorCtlTarget + ".rotateY" )
+newGroupRotForStartJointZ = cmds.getAttr( mirrorCtlTarget + ".rotateZ" )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cmds.Duplicate (mirrorCtlTarget)
+
+duplicateCtlCurve = (mirrorCtlTarget + "1")
+
+
+cmds.parent( duplicateCtlCurve, w=True )
+cmds.move(0, 0, 0, rpr =True)
+
+
+cmds.setAttr( duplicateCtlCurve + ".rotateX", 0 ) 
+cmds.setAttr( duplicateCtlCurve + ".rotateY", 0 ) 
+cmds.setAttr( duplicateCtlCurve + ".rotateZ", 0 ) 
+
+cmds.makeIdentity(duplicateCtlCurve, apply=True, t=1, r=1, s=1, n=0)
+
+cmds.xform(duplicateCtlCurve, ws = True, t = targetLocation)
+
+cmds.rename(duplicateCtlCurve, intendedCtlDupName)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+string ctlCurveForGrouping = intendedCtlDupName 
+string ctlCurvesSnapJoint = jointTarget
+
+
+snapToJointLoc = cmds.xform(ctlCurvesSnapJoint, q=1, ws=1, t=1 )
+
+
+
+cmds.group( ctlCurveForGrouping, n = newCtlGroupName )
+
+cmds.xform(newCtlGroupName, ws = True, sp = snapToJointLoc, rp = snapToJointLoc)
+
+
+
+
+
+
+
+
+jointForOrientTransfer = jointTarget.replace('_ctl', '') 
+mirrorLeftCtlGroup = (mirrorCtlTarget + "_group")
+ctlCurveForOrientTransfer =  (jointForOrientTransfer+"_ctl")
+ctlCurveGroupForOrientTransfer = (jointForOrientTransfer+"_ctl_group")
+
+
+ctlGroupRotateTransferX = cmds.getAttr( mirrorLeftCtlGroup + ".rotateX" )
+ctlGroupRotateTransferY = cmds.getAttr( mirrorLeftCtlGroup + ".rotateY" )
+tlGroupRotateTransferZ = cmds.getAttr( mirrorLeftCtlGroup + ".rotateZ" )
+
+
+ctlGroupRotateTransferX = (ctlGroupRotateTransferX * ctlGroupRotateTransferXFlipper)
+
+ctlGroupRotateTransferY = (ctlGroupRotateTransferY * ctlGroupRotateTransferYFlipper)
+
+ctlGroupRotateTransferZ = (ctlGroupRotateTransferZ * ctlGroupRotateTransferZFlipper)
+
+
+cmds.setAttr( ctlCurveGroupForOrientTransfer + ".rotateX", ctlGroupRotateTransferX)
+cmds.setAttr( ctlCurveGroupForOrientTransfer + ".rotateY", ctlGroupRotateTransferY) 
+cmds.setAttr( ctlCurveGroupForOrientTransfer + ".rotateZ", ctlGroupRotateTransferZ)
+
+mirrorRotationValue = cmds.getAttr(ctlCurveGroupForOrientTransfer + ".rotateX" )
+mirrorRotationValue = (mirrorRotationValue + 180 )
+
+cmds.setAttr ( ctlCurveForOrientTransfer + ".rotateX", 180)
+cmds.setAttr ( ctlCurveForOrientTransfer + ".rotateY", 180)
+
+
+cmds.makeIdentity(ctlCurveForOrientTransfer, apply=True, t=1, r=1, s=1)
+
+cmds.setAttr(ctlCurveGroupForOrientTransfer + ".rotateX", ((ctlGroupRotateTransferX) + 180) ) 

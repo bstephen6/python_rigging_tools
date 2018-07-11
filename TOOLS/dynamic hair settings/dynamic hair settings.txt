@@ -1,0 +1,64 @@
+
+SHORT
+
+friction = .8
+
+stretch and compressions resist = 10
+bend and twist resist = 15
+
+stiffness = .75
+
+start attract = .25
+
+
+mass=1
+drag = .05
+tang drag = .1
+damp = .5
+stretch damp = .5
+dynamics weight =1
+
+TOUNGE
+
+friction = .8
+
+stretch and compressions resist = 10
+bend =5
+twist resist = 15
+
+stiffness = .75
+
+start attract = .25
+
+
+mass=1
+drag = .05
+tang drag = .1
+damp = .5
+stretch damp = .5
+dynamics weight =1
+
+BALLOON
+
+
+bounce = .5
+friction = .6
+
+stretch and compressions resist = 10
+bend =1.5
+
+
+twist resist = 0
+extra bend links=3
+
+stiffness = .2
+
+start attract = .03
+
+
+mass=1
+drag = .04
+tang drag = .1
+damp = .01
+stretch damp = .2
+dynamics weight =1

@@ -1,0 +1,80 @@
+#WEAPON RIGGER w/ hand, sheath, world snapping 
+import maya.cmds as cmds
+import maya.mel as mel
+
+
+# HOW IT WORKS
+
+#Select the Curve  you want to have the enum on and to whom's group will be parented to the slots
+#then select the joints you want the curve to jump between
+#then run and it should make the script node and the expression to 
+
+
+#Get an array from the selection
+sA = cmds.ls(sl=True)
+
+enumN = 'Prop_Actions'
+gP = sA[0] + '_switch_Node()'
+
+eAttr = (sA[0] + '.' + enumN)
+
+
+# right here we were using a block from the ik handle as a template for making expressions strings with all the formating
+# I was filling in the old variables with new ones to repurpose it
+# but i ran into this issue where I'll have to make this string more dynamic like maybe run a look for the length of the array and running a loop
+# or maybe just a for look for the selection without the first selection where it makes the strings and then appends them to a string to go in that block of text
+# some layered process like that but it should work well and be very adaptable to the  new auto rigger
+globalPS =( ('global proc ' + gP + '{') + '\n' + 
+(indent1 + 'int $switchDetect = `getAttr ' + eAttr + '`;') + '\n' + 
+(indent1 + 'if ($switchDetect == 0)') + '\n' +
+(indent2 + '{') + '\n' +
+(indent3 + 'print("snap to");') + '\n' +
+
+(indent3 + 'float $shoulderRotateX = `getAttr ' + locA[0] + '.rotateX`;') + '\n' +
+(indent3 + 'float $shoulderRotateY = `getAttr ' + locA[0] + '.rotateY`;') + '\n' +
+(indent3 + 'float $shoulderRotateZ = `getAttr ' + locA[0] + '.rotateZ`;') + '\n' +
+(indent3 + 'setAttr ' + jL[2] + '.rotateX ' + '$shoulderRotateX;') + '\n' +
+(indent3 + 'setAttr ' + jL[2] + '.rotateY ' + '$shoulderRotateY;') + '\n' +
+(indent3 + 'setAttr ' + jL[2] + '.rotateZ ' + '$shoulderRotateZ;') + '\n' +
+
+
+global proc swordSwitch()
+{
+	
+	int $posDetect = `getAttr sword_ctl_1.wep_actions`;
+
+	if ($posDetect == 0)
+	{
+		setAttr "sword_ctl_1_group_parentConstraint1.sheath_insertW0" 1;
+		setAttr "sword_ctl_1_group_parentConstraint1.R_sword_slotW1" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.L_sword_slotW2" 0;
+	}
+	if ($posDetect == 1)
+	{
+		setAttr "sword_ctl_1_group_parentConstraint1.sheath_insertW0" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.R_sword_slotW1" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.L_sword_slotW2" 1;	
+	}
+	if ($posDetect == 2)
+	{
+		setAttr "sword_ctl_1_group_parentConstraint1.sheath_insertW0" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.R_sword_slotW1" 1;
+		setAttr "sword_ctl_1_group_parentConstraint1.L_sword_slotW2" 0;
+	}
+	if ($posDetect == 3)
+	{
+		setAttr "sword_ctl_1_group_parentConstraint1.sheath_insertW0" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.R_sword_slotW1" 0;
+		setAttr "sword_ctl_1_group_parentConstraint1.L_sword_slotW2" 0;
+		setAttr "sword_ctl_1_group.rotateZ" 0;
+		setAttr "sword_ctl_1_group.translateX" 0;
+		setAttr "sword_ctl_1_group.translateY" 0;
+		setAttr "sword_ctl_1_group.translateZ" 0;
+		setAttr "sword_ctl_1_group.rotateX" 0;
+		setAttr "sword_ctl_1_group.rotateY" 0;		
+	}
+}
+
+
+eS = ('nt $indexx = ` scriptJob -attributeChange "' + sA[0] + '.' + enumN + '" "' + gP + '"`;')
+int $indexx = ` scriptJob -attributeChange "sword_ctl_1.wep_actions" "swordSwitch()"`;

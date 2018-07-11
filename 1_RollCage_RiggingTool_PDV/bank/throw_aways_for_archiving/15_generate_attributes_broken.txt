@@ -1,0 +1,13 @@
+string $ctlForAttributes = "INSERT CTR ARRAY VAR HERE";
+string $attributeName = "INSERT attribute ARRAY VAR HERE";
+string $attMin = "insert min VAR";
+string $attMax = "insert max VAR";
+
+string $groupForAttributes = ($ctlForAttributes + "_group");
+string $ctlAttForAttributes = ($ctlForAttributes + "." + $attributeName);
+
+
+select -r $ctlForAttributes ;
+
+addAttr -ln $attributeName  -at double  -min $attMin -max $attMax -dv 0 |$groupForAttributes|$ctlForAttributes;
+setAttr -e-keyable true |$groupForAttributes|$ctlAttForAttributes;

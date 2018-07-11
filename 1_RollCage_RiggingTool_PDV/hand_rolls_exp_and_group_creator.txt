@@ -1,0 +1,449 @@
+string $expressionHandHolder = "R_hand_ctl" ; 
+string $HRExpName = "R_hand_rolls" ; 
+
+string $rollA = "thumb" ; 
+string $fingerCtlA = "R_thumb" ; 
+string $fingerJointA1 = ($fingerCtlA + "_1");
+string $fingerJointA2 = ($fingerCtlA + "_2");
+string $fingerJointA3 = ($fingerCtlA + "_3");
+string $fingerCtlCurveA1 = ($fingerCtlA + "_1_ctl"); 
+string $fingerCtlCurveA2 = ($fingerCtlA + "_2_ctl"); 
+string $fingerCtlCurveA3 = ($fingerCtlA + "_3_ctl"); 
+string $fingerRollGroupA1 = ($fingerCtlCurveA1 + "_roll_group") ; 
+string $fingerRollGroupA2 = ($fingerCtlCurveA2 + "_roll_group") ; 
+string $fingerRollGroupA3 = ($fingerCtlCurveA3 + "_roll_group") ; 
+vector $jointA1 = `xform -q -ws -t $fingerJointA1` ; 
+vector $jointA2 = `xform -q -ws -t $fingerJointA2` ; 
+vector $jointA3 = `xform -q -ws -t $fingerJointA3` ; 
+
+
+
+
+string $rollB = "index" ;
+string $fingerCtlB = "R_index" ;
+string $fingerJointB1 = ($fingerCtlB + "_1");
+string $fingerJointB2 = ($fingerCtlB + "_2");
+string $fingerJointB3 = ($fingerCtlB + "_3");
+string $fingerCtlCurveB1 = ($fingerCtlB + "_1_ctl");
+string $fingerCtlCurveB2 = ($fingerCtlB + "_2_ctl");
+string $fingerCtlCurveB3 = ($fingerCtlB + "_3_ctl");
+string $fingerRollGroupB1 = ($fingerCtlCurveB1 + "_roll_group") ;
+string $fingerRollGroupB2 = ($fingerCtlCurveB2 + "_roll_group") ;
+string $fingerRollGroupB3 = ($fingerCtlCurveB3 + "_roll_group") ;
+vector $jointB1 = `xform -q -ws -t $fingerJointB1` ;
+vector $jointB2 = `xform -q -ws -t $fingerJointB2` ;
+vector $jointB3 = `xform -q -ws -t $fingerJointB3` ;
+
+
+string $rollC = "middle" ;
+string $fingerCtlC = "R_middle" ;
+string $fingerJointC1 = ($fingerCtlC + "_1");
+string $fingerJointC2 = ($fingerCtlC + "_2");
+string $fingerJointC3 = ($fingerCtlC + "_3");
+string $fingerCtlCurveC1 = ($fingerCtlC + "_1_ctl");
+string $fingerCtlCurveC2 = ($fingerCtlC + "_2_ctl");
+string $fingerCtlCurveC3 = ($fingerCtlC + "_3_ctl");
+string $fingerRollGroupC1 = ($fingerCtlCurveC1 + "_roll_group") ;
+string $fingerRollGroupC2 = ($fingerCtlCurveC2 + "_roll_group") ;
+string $fingerRollGroupC3 = ($fingerCtlCurveC3 + "_roll_group") ;
+vector $jointC1 = `xform -q -ws -t $fingerJointC1` ;
+vector $jointC2 = `xform -q -ws -t $fingerJointC2` ;
+vector $jointC3 = `xform -q -ws -t $fingerJointC3` ;
+
+
+
+string $rollD = "ring" ;
+string $fingerCtlD = "R_ring" ;
+string $fingerJointD1 = ($fingerCtlD + "_1");
+string $fingerJointD2 = ($fingerCtlD + "_2");
+string $fingerJointD3 = ($fingerCtlD + "_3");
+string $fingerCtlCurveD1 = ($fingerCtlD + "_1_ctl");
+string $fingerCtlCurveD2 = ($fingerCtlD + "_2_ctl");
+string $fingerCtlCurveD3 = ($fingerCtlD + "_3_ctl");
+string $fingerRollGroupD1 = ($fingerCtlCurveD1 + "_roll_group") ;
+string $fingerRollGroupD2 = ($fingerCtlCurveD2 + "_roll_group") ;
+string $fingerRollGroupD3 = ($fingerCtlCurveD3 + "_roll_group") ;
+vector $jointD1 = `xform -q -ws -t $fingerJointD1` ;
+vector $jointD2 = `xform -q -ws -t $fingerJointD2` ;
+vector $jointD3 = `xform -q -ws -t $fingerJointD3` ;
+
+
+
+string $rollE = "pinky" ;
+string $fingerCtlE = "R_pinky" ;
+string $fingerJointE1 = ($fingerCtlE + "_1");
+string $fingerJointE2 = ($fingerCtlE + "_2");
+string $fingerJointE3 = ($fingerCtlE + "_3");
+string $fingerCtlCurveE1 = ($fingerCtlE + "_1_ctl");
+string $fingerCtlCurveE2 = ($fingerCtlE + "_2_ctl");
+string $fingerCtlCurveE3 = ($fingerCtlE + "_3_ctl");
+string $fingerRollGroupE1 = ($fingerCtlCurveE1 + "_roll_group") ;
+string $fingerRollGroupE2 = ($fingerCtlCurveE2 + "_roll_group") ;
+string $fingerRollGroupE3 = ($fingerCtlCurveE3 + "_roll_group") ;
+vector $jointE1 = `xform -q -ws -t $fingerJointE1` ;
+vector $jointE2 = `xform -q -ws -t $fingerJointE2` ;
+vector $jointE3 = `xform -q -ws -t $fingerJointE3` ;
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select -r $fingerCtlCurveA1;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupA1 ;
+
+select -cl ;
+
+select $fingerRollGroupA1;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointA1.x) ($jointA1.y) ($jointA1.z) ($fingerRollGroupA1 + ".scalePivot") ($fingerRollGroupA1 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveA2;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupA2 ;
+
+select -cl ;
+
+select $fingerRollGroupA2;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointA2.x) ($jointA2.y) ($jointA2.z) ($fingerRollGroupA2 + ".scalePivot") ($fingerRollGroupA2 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $fingerCtlCurveA3;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupA3 ;
+
+select -cl ;
+
+select $fingerRollGroupA3;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointA3.x) ($jointA3.y) ($jointA3.z) ($fingerRollGroupA3 + ".scalePivot") ($fingerRollGroupA3 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+
+
+
+
+select -r $fingerCtlCurveB1;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupB1 ;
+
+select -cl ;
+
+select $fingerRollGroupB1;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointB1.x) ($jointB1.y) ($jointB1.z) ($fingerRollGroupB1 + ".scalePivot") ($fingerRollGroupB1 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveB2;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupB2 ;
+
+select -cl ;
+
+select $fingerRollGroupB2;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointB2.x) ($jointB2.y) ($jointB2.z) ($fingerRollGroupB2 + ".scalePivot") ($fingerRollGroupB2 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $fingerCtlCurveB3;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupB3 ;
+
+select -cl ;
+
+select $fingerRollGroupB3;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointB3.x) ($jointB3.y) ($jointB3.z) ($fingerRollGroupB3 + ".scalePivot") ($fingerRollGroupB3 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveC1;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupC1 ;
+
+select -cl ;
+
+select $fingerRollGroupC1;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointC1.x) ($jointC1.y) ($jointC1.z) ($fingerRollGroupC1 + ".scalePivot") ($fingerRollGroupC1 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveC2;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupC2 ;
+
+select -cl ;
+
+select $fingerRollGroupC2;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointC2.x) ($jointC2.y) ($jointC2.z) ($fingerRollGroupC2 + ".scalePivot") ($fingerRollGroupC2 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $fingerCtlCurveC3;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupC3 ;
+
+select -cl ;
+
+select $fingerRollGroupC3;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointC3.x) ($jointC3.y) ($jointC3.z) ($fingerRollGroupC3 + ".scalePivot") ($fingerRollGroupC3 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveD1;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupD1 ;
+
+select -cl ;
+
+select $fingerRollGroupD1;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointD1.x) ($jointD1.y) ($jointD1.z) ($fingerRollGroupD1 + ".scalePivot") ($fingerRollGroupD1 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveD2;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupD2 ;
+
+select -cl ;
+
+select $fingerRollGroupD2;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointD2.x) ($jointD2.y) ($jointD2.z) ($fingerRollGroupD2 + ".scalePivot") ($fingerRollGroupD2 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $fingerCtlCurveD3;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupD3 ;
+
+select -cl ;
+
+select $fingerRollGroupD3;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointD3.x) ($jointD3.y) ($jointD3.z) ($fingerRollGroupD3 + ".scalePivot") ($fingerRollGroupD3 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveE1;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupE1 ;
+
+select -cl ;
+
+select $fingerRollGroupE1;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointE1.x) ($jointE1.y) ($jointE1.z) ($fingerRollGroupE1 + ".scalePivot") ($fingerRollGroupE1 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+select -r $fingerCtlCurveE2;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupE2 ;
+
+select -cl ;
+
+select $fingerRollGroupE2;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointE2.x) ($jointE2.y) ($jointE2.z) ($fingerRollGroupE2 + ".scalePivot") ($fingerRollGroupE2 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+select -r $fingerCtlCurveE3;
+
+doGroup 0 1 1;
+
+rename "group1" $fingerRollGroupE3 ;
+
+select -cl ;
+
+select $fingerRollGroupE3;
+
+SnapToPoint; dR_enterForSnap;
+move -rpr ($jointE3.x) ($jointE3.y) ($jointE3.z) ($fingerRollGroupE3 + ".scalePivot") ($fingerRollGroupE3 + ".rotatePivot") ;
+SnapToPoint; dR_enterForSnap;
+
+select -cl ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+string $expLine1 = ($fingerRollGroupA1 + ".rotateY = " + $expressionHandHolder + "." + $rollA + "_spread *5;\n") ;
+string $expLine2 = ($fingerRollGroupB1 + ".rotateY = " + $expressionHandHolder + "." + $rollB + "_spread *5;\n") ; 
+string $expLine3 = ($fingerRollGroupC1 + ".rotateY = " + $expressionHandHolder + "." + $rollC + "_spread *5;\n") ;
+string $expLine4 = ($fingerRollGroupD1 + ".rotateY = " + $expressionHandHolder + "." + $rollD + "_spread *5;\n") ;
+string $expLine5 = ($fingerRollGroupE1 + ".rotateY = " + $expressionHandHolder + "." + $rollE + "_spread *5;\n") ;
+
+
+
+
+string $expLine6 = ($fingerRollGroupA1 + ".rotateZ = " + $expressionHandHolder + "." + $rollA + "_roll *-8;\n");
+string $expLine7 = ($fingerRollGroupA2 + ".rotateZ = " + $expressionHandHolder + "." + $rollA + "_roll *-10;\n");
+string $expLine8 = ($fingerRollGroupA3 + ".rotateZ = " + $expressionHandHolder + "." + $rollA + "_roll *-10;\n");
+
+string $expLine9 = ($fingerRollGroupB1 + ".rotateZ = " + $expressionHandHolder + "." + $rollB + "_roll *-8;\n");
+string $expLine10 = ($fingerRollGroupB2 + ".rotateZ = " + $expressionHandHolder + "." + $rollB + "_roll *-10;\n");
+string $expLine11 = ($fingerRollGroupB3 + ".rotateZ = " + $expressionHandHolder + "." + $rollB + "_roll *-10;\n");
+
+string $expLine12 = ($fingerRollGroupC1 + ".rotateZ = " + $expressionHandHolder + "." + $rollC + "_roll *-8;\n");
+string $expLine13 = ($fingerRollGroupC2 + ".rotateZ = " + $expressionHandHolder + "." + $rollC + "_roll *-10;\n");
+string $expLine14 = ($fingerRollGroupC3 + ".rotateZ = " + $expressionHandHolder + "." + $rollC + "_roll *-10;\n");
+
+string $expLine15 = ($fingerRollGroupD1 + ".rotateZ = " + $expressionHandHolder + "." + $rollD + "_roll *-8;\n");
+string $expLine16 = ($fingerRollGroupD2 + ".rotateZ = " + $expressionHandHolder + "." + $rollD + "_roll *-10;\n");
+string $expLine17 = ($fingerRollGroupD3 + ".rotateZ = " + $expressionHandHolder + "." + $rollD + "_roll *-10;\n");
+
+string $expLine18 = ($fingerRollGroupE1 + ".rotateZ = " + $expressionHandHolder + "." + $rollE + "_roll *-8;\n");
+string $expLine19 = ($fingerRollGroupE2 + ".rotateZ = " + $expressionHandHolder + "." + $rollE + "_roll *-10;\n");
+string $expLine20 = ($fingerRollGroupE3 + ".rotateZ = " + $expressionHandHolder + "." + $rollE + "_roll *-10;\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+expression -s ($expLine1 + $expLine2 + $expLine3 + $expLine4 + $expLine5 + $expLine6 + $expLine7 + $expLine8 + $expLine9 + $expLine10 + $expLine11 + $expLine12 + $expLine13 + $expLine14 + $expLine15 + $expLine16 + $expLine17 + $expLine18 + $expLine19 + $expLine20 )  -o "" -n ($expressionHandHolder) -ae 1 -uc all ;

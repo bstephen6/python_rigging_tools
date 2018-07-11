@@ -1,0 +1,96 @@
+
+#imported modules
+
+import maya.cmds as cmds
+import maya.OpenMaya as openMaya
+import pymel.core as pm
+
+#global variables
+
+jArray = []
+
+# classes set up
+
+class MayaItem:
+	def__init_(self, name):
+		self.name = str(name)
+
+		Vector attrArray = cmds.xform( name, q = 1, ws = 1, t = 1 )
+
+		self.translateX = attrArray[0]
+		self.translateY = attrArray[1]
+		self.translateZ = attrArray[2]
+
+		Vector attrArray = cmds.xform( name, q = 1, ro = 1 )
+
+		self.rotateX = attrArray[0]
+		self.rotateY = attrArray[1]
+		self.rotateZ = attrArray[2]
+
+		Vector attrArray = cmds.xform( name, q = 1, ws = 1, s = 1 )
+
+		self.scaleX = attrArray[0]
+		self.scaleY = attrArray[1]
+		self.scaleZ = attrArray[2]
+	
+	#takes 1 arguements, uses self, and a vector for location (y)
+	def moveToPoint(self, y):
+		cmds.xform(self, ws = True, t = y)
+	
+	#takes 1 arguements, uses self, and the item to be move to
+	def moveToItem(self, y):
+		Vector moveLoc = cmds.Xforms(y, q = 1, ws = 1, t = 1)
+		cmds.xform(self, ws = 1, t = moveLoc)
+	
+	#takes 1 the int arguement 1 or 0 for the attr in maya
+	def visSwitch(self, x):
+		y = str((self.name) + ".visibility")
+		cmds.setAttr(y, x)
+	#
+	def move():
+
+	#
+	def rotate():
+	
+	#
+	def scale():
+
+	#
+	def orient():
+
+	#
+	def delete():
+	
+	#
+	def select():		
+		
+
+
+class Joint(MayaItem):
+	def__init __(self, name, ):
+		
+
+
+class Loc:
+
+
+
+class ControlCurve:
+	def__init__(self, name):
+	
+	def select():
+	
+	def overideColor():
+	
+	visSwitch():
+	
+class Curve:
+
+class Mesh:
+
+
+		
+# functions / methods
+
+def getJoints():
+	

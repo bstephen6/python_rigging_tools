@@ -1,0 +1,218 @@
+select -r L_foot_ctl ;
+
+addAttr -ln "toe_roll"  -at double  -min -3 -max 10 -dv 0 |L_foot_ctl_group|L_foot_ctl;
+setAttr -e-keyable true |L_foot_ctl_group|L_foot_ctl.toe roll;
+
+addAttr -ln "ball_roll"  -at double  -min -3 -max 10 -dv 0 |L_foot_ctl_group|L_foot_ctl;
+setAttr -e-keyable true |L_foot_ctl_group|L_foot_ctl.ball roll;
+
+addAttr -ln "heel_roll"  -at double  -min -3 -max 10 -dv 0 |L_foot_ctl_group|L_foot_ctl;
+setAttr -e-keyable true |L_foot_ctl_group|L_foot_ctl.heel roll;
+
+select -r R_foot_ctl ;
+
+addAttr -ln "toe_roll"  -at double  -min -3 -max 10 -dv 0 |R_foot_ctl_group|R_foot_ctl;
+setAttr -e-keyable true |R_foot_ctl_group|R_foot_ctl.toe roll;
+
+addAttr -ln "ball_roll"  -at double  -min -3 -max 10 -dv 0 |R_foot_ctl_group|R_foot_ctl;
+setAttr -e-keyable true |R_foot_ctl_group|R_foot_ctl.ball roll;
+
+addAttr -ln "heel_roll"  -at double  -min -3 -max 10 -dv 0 |R_foot_ctl_group|R_foot_ctl;
+setAttr -e-keyable true |R_foot_ctl_group|R_foot_ctl.heel roll;
+
+
+select -r L_hand_ctl ;
+
+addAttr -ln "thumb_roll"  -at double  -min -1 -max 10 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.thumb_roll;
+
+
+addAttr -ln "thumb_spread"  -at double  -min -5 -max 5 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.thumb_spread;
+
+addAttr -ln "index_roll"  -at double  -min -1 -max 10 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.index_roll;
+
+
+addAttr -ln "index_spread"  -at double  -min -5 -max 5 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.index_spread;
+
+
+addAttr -ln "middle_roll"  -at double  -min -1 -max 10 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.middle_roll;
+
+
+addAttr -ln "middle_spread"  -at double  -min -5 -max 5 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.middle_spread;
+
+addAttr -ln "ring_roll"  -at double  -min -1 -max 10 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.ring_roll;
+
+
+addAttr -ln "ring_spread"  -at double  -min -5 -max 5 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.ring_spread;
+
+
+addAttr -ln "pinky_roll"  -at double  -min -1 -max 10 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.pinky_roll;
+
+
+addAttr -ln "pinky_spread"  -at double  -min -5 -max 5 -dv 0 |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.pinky_spread;
+
+
+addAttr -ln "ctrls_visible"  -at bool  |L_hand_ctl_group|L_hand_ctl;
+setAttr -e-keyable true |L_hand_ctl_group|L_hand_ctl.ctrls_visible;
+
+select -r R_hand_ctl ;
+
+addAttr -ln "thumb_roll"  -at double  -min -1 -max 10 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.thumb_roll;
+
+
+addAttr -ln "thumb_spread"  -at double  -min -5 -max 5 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.thumb_spread;
+
+addAttr -ln "index_roll"  -at double  -min -1 -max 10 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.index_roll;
+
+
+addAttr -ln "index_spread"  -at double  -min -5 -max 5 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.index_spread;
+
+
+addAttr -ln "middle_roll"  -at double  -min -1 -max 10 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.middle_roll;
+
+
+addAttr -ln "middle_spread"  -at double  -min -5 -max 5 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.middle_spread;
+
+addAttr -ln "ring_roll"  -at double  -min -1 -max 10 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.ring_roll;
+
+
+addAttr -ln "ring_spread"  -at double  -min -5 -max 5 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.ring_spread;
+
+
+addAttr -ln "pinky_roll"  -at double  -min -1 -max 10 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.pinky_roll;
+
+
+addAttr -ln "pinky_spread"  -at double  -min -5 -max 5 -dv 0 |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.pinky_spread;
+
+addAttr -ln "ctrls_visible"  -at bool  |R_hand_ctl_group|R_hand_ctl;
+setAttr -e-keyable true |R_hand_ctl_group|R_hand_ctl.ctrls_visible;
+
+select -r L_eye_brow_ctl ;
+
+addAttr -ln "brow_all_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.brow_all_up_down;
+
+addAttr -ln "brow_all_in_out"  -at double  -min -10 -max 10 -dv 0 |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.brow_all_in_out;
+
+addAttr -ln "brow_inner_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.brow_inner_up_down;
+
+addAttr -ln "brow_mid_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.brow_mid_up_down;
+
+addAttr -ln "brow_outer_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.brow_outer_up_down;
+
+addAttr -ln "ctrls_visible"  -at bool  |L_eye_brow_ctl_group|L_eye_brow_ctl;
+setAttr -e-keyable true |L_eye_brow_ctl_group|L_eye_brow_ctl.ctrls_visible;
+
+select -r R_eye_brow_ctl ;
+
+addAttr -ln "brow_all_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.brow_all_up_down;
+
+addAttr -ln "brow_all_in_out"  -at double  -min -10 -max 10 -dv 0 |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.brow_all_in_out;
+
+addAttr -ln "brow_inner_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.brow_inner_up_down;
+
+addAttr -ln "brow_mid_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.brow_mid_up_down;
+
+addAttr -ln "brow_outer_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.brow_outer_up_down;
+
+addAttr -ln "ctrls_visible"  -at bool  |R_eye_brow_ctl_group|R_eye_brow_ctl;
+setAttr -e-keyable true |R_eye_brow_ctl_group|R_eye_brow_ctl.ctrls_visible;
+
+
+select -r L_eye_ctl ;
+
+addAttr -ln "up_lid_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_ctl_group|L_eye_ctl;
+setAttr -e-keyable true |L_eye_ctl_group|L_eye_ctl.up_lid_up_down;
+
+addAttr -ln "low_lid_up_down"  -at double  -min -10 -max 10 -dv 0 |L_eye_ctl_group|L_eye_ctl;
+setAttr -e-keyable true |L_eye_ctl_group|L_eye_ctl.low_lid_up_down;
+
+addAttr -ln "ctrls_visible"  -at bool  |L_eye_ctl_group|L_eye_ctl;
+setAttr -e-keyable true |L_eye_ctl_group|L_eye_ctl.ctrls_visible;
+
+select -r R_eye_ctl ;
+
+addAttr -ln "up_lid_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_ctl_group|R_eye_ctl;
+setAttr -e-keyable true |R_eye_ctl_group|R_eye_ctl.up_lid_up_down;
+
+addAttr -ln "low_lid_up_down"  -at double  -min -10 -max 10 -dv 0 |R_eye_ctl_group|R_eye_ctl;
+setAttr -e-keyable true |R_eye_ctl_group|R_eye_ctl.low_lid_up_down;
+
+addAttr -ln "ctrls_visible"  -at bool  |R_eye_ctl_group|R_eye_ctl;
+setAttr -e-keyable true |R_eye_ctl_group|R_eye_ctl.ctrls_visible;
+
+select -r jaw_ctl ;
+
+addAttr -ln "mouth_open_close"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.mouth_open_close;
+
+addAttr -ln "L_upper_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.L_upper_side_up_down;
+
+addAttr -ln "L_lower_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.L_lower_side_up_down;
+
+addAttr -ln "C_upper_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.C_upper_side_up_down;
+
+addAttr -ln "C_lower_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.C_lower_side_up_down;
+
+addAttr -ln "R_upper_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.R_upper_side_up_down;
+
+addAttr -ln "R_lower_side_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.R_lower_side_up_down;
+
+addAttr -ln "L_corner_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.L_corner_up_down;
+
+addAttr -ln "L_corner_in_out"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.L_corner_in_out;
+
+addAttr -ln "R_corner_up_down"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.R_corner_up_down;
+
+addAttr -ln "R_corner_in_out"  -at double  -min -10 -max 10 -dv 0 |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.R_corner_in_out;
+
+addAttr -ln "ctrls_visible"  -at bool  |jaw_ctl_group|jaw_ctl;
+setAttr -e-keyable true |jaw_ctl_group|jaw_ctl.ctrls_visible;
+
+select -r L_nostril_ctl_1 ;
+
+addAttr -ln "secondary_ctrls_visible"  -at bool  |L_nostril_ctl_1_group|L_nostril_ctl_1;
+setAttr -e-keyable true |L_nostril_ctl_1_group|L_nostril_ctl_1.secondary_ctrls_visible;
+
+select -r R_nostril_ctl_1 ;
+
+addAttr -ln "secondary_ctrls_visible"  -at bool  |R_nostril_ctl_1_group|R_nostril_ctl_1;
+setAttr -e-keyable true |R_nostril_ctl_1_group|R_nostril_ctl_1.secondary_ctrls_visible;

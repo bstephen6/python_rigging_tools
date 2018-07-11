@@ -1,0 +1,9 @@
+import maya.cmds as cmds
+
+meshArray = cmds.ls( sl = True )
+
+for mesh in meshArray:
+    cmds.select(cl=1)
+    cmds.select(mesh)
+    cmds.xform(cp=True)
+    cmds.makeIdentity(mesh, apply=True, t=1, r=1, s=1)

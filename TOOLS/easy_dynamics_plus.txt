@@ -1,0 +1,311 @@
+import maya.cmds as cmds
+
+#UI components
+window = cmds.window(title = "Easy Dynamics Panel", widthHeight = (370,250))
+cmds.rowColumnLayout(numberOfColumns = 2, columnWidth = [(5, 300), (5, 300), (5, 300)])
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "store Orig. Array", command = 'storeOrigArray()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "sel Orig. Array", command = 'selectOrigArray()')
+cmds.button(label = "sel Dupe Array", command = 'selectDupeArray()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "Rigg Dynamic Mesh and Dupe / Scale", command = 'getScale()')
+cmds.button(label = "Rigg Dynamic Mesh and Dupe", command= 'riggDynamicMesh()')
+cmds.button(label = "constrain and rigibody", command= 'constrainAndRigibody()')
+cmds.button(label = "insert basic ground", command= 'basicGround()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "Add Gravity", command = 'addGravity()')
+cmds.button(label = "Add Wind/Air", command = 'addAir()')
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.text(label = '', width = 150)
+cmds.button(label = "bake out new package", command= 'bakeDownAndFinishNewPackage())')
+cmds.button(label = "bake out new animation", command= 'bakeDownAndFinishNewAnimation()')
+cmds.showWindow(window)
+
+
+
+
+cmds.select(cl=1)
+global assetsLayer
+global duplicateMeshArray
+assetsLayer =[]
+duplicateMeshArray = []
+
+global origMeshArray
+global dupeMeshArray
+
+
+
+dupMeshGroup = 'dupGroup'
+
+base = "base_j"
+scaleFactor = float(.95)
+
+dlayNameA = 'actual assets'
+dlayNameB = 'dynamic dups'
+
+
+
+
+
+def storeOrigArray():
+    global origMeshArray
+    origMeshArray = cmds.ls(sl =True)
+    print(origMeshArray)
+
+def selectOrigArray():
+    global origMeshArray
+    print(origMeshArray)
+    cmds.select(cl=1)
+    for x in origMeshArray:
+        cmds.select( x, add=True)
+        
+def selectDupeArray():
+    global origMeshArray
+    print(origMeshArray)
+    cmds.select(cl=1)
+    for x in origMeshArray:
+        cmds.select( "D_" + x, add=True)
+    
+
+
+def getScale():
+    popUp = cmds.window(title = "Scale Value", sizeable=False, resizeToFitChildren=True)
+    cmds.rowColumnLayout(numberOfColumns = 3, columnWidth = [(5, 150), (5, 1500), (5, 150)])
+    cmds.text(label='')
+    cmds.text(label="Set Duplicate Mesh Scale")
+    cmds.text(label='')
+    cmds.text(label='')
+    scaleField = cmds.floatField( minValue=0, maxValue=1.0, value=.95 )
+    cmds.text(label='')
+    cmds.text(label='')
+    
+    
+
+    def riggDynamicMeshScale(self):
+	    scaleFactor = cmds.floatField(scaleField, q=1, v=1)
+	    meshArray = cmds.ls( sl = True )
+	    cmds.deleteUI(popUp, window = True)
+	    cmds.select(cl=1)
+
+	    cmds.joint( n = base, a=1, p = (0, 0, 0))
+	    cmds.select(cl=1)
+	
+	    for mesh in meshArray:
+		    jointName = (mesh + "_j")
+		    dupeMeshName = ("D_" + mesh)
+		    meshLoc = cmds.xform( mesh, q = 1, ws = 1, rp = 1)
+		    cmds.joint(n = jointName, p = meshLoc)
+		
+		    cmds.parent(jointName, base)
+		    cmds.select(cl=1)
+		
+		    cmds.duplicate(mesh, n = dupeMeshName)
+		    cmds.setAttr((dupeMeshName + ".scaleX"), scaleFactor) 
+		    cmds.setAttr((dupeMeshName + ".scaleY"), scaleFactor) 
+		    cmds.setAttr((dupeMeshName + ".scaleZ"), scaleFactor) 
+		    cmds.select(cl=1)
+		    
+		    global assetsLayer
+		    assetsLayer.append(jointName)
+		    assetsLayer.append(mesh)
+		    global duplicateMeshArray
+		    duplicateMeshArray.append(dupeMeshName)
+		    cmds.select(cl=1)
+	
+		    cmds.skinCluster( jointName, mesh, tsb=True, mi=1)
+	    cmds.select(cl=1)
+	    cmds.select(duplicateMeshArray)
+	    cmds.group(n=dupMeshGroup)
+	    
+	    assetsLayer.append('base_j')
+	    cmds.select(assetsLayer)
+	    cmds.createDisplayLayer(nr=True, n=dlayNameA)
+	    cmds.select(cl=True)
+	    
+	    cmds.select(duplicateMeshArray)
+	    cmds.createDisplayLayer(nr=True, n=dlayNameB)
+	    cmds.select(cl=True)
+	    meshArray = []
+	    assetsLayer = []
+	     
+    cmds.button(label = "Rigg Dynamic Mesh and Dupe", command = riggDynamicMeshScale)
+    cmds.showWindow(popUp)	
+	
+def riggDynamicMesh():
+
+
+	meshArray = cmds.ls( sl = True )
+	cmds.select(cl=1)
+	cmds.joint( n = base, a=1, p = (0, 0, 0))
+	cmds.select(cl=1)
+	
+	for mesh in meshArray:
+		jointName = (mesh + "_j")
+		dupeMeshName = ("D_" + mesh)
+		meshLoc = cmds.xform( mesh, q = 1, ws = 1, rp = 1)
+		cmds.joint(n = jointName, p = meshLoc)
+		
+		cmds.parent(jointName, base)
+		cmds.select(cl=1)
+		
+		cmds.duplicate(mesh, n = dupeMeshName)
+		cmds.setAttr((dupeMeshName + ".scaleX"), scaleFactor) 
+		cmds.setAttr((dupeMeshName + ".scaleY"), scaleFactor) 
+		cmds.setAttr((dupeMeshName + ".scaleZ"), scaleFactor) 
+		cmds.select(cl=1)
+		
+		global assetsLayer
+		assetsLayer.append(jointName)
+		assetsLayer.append(mesh)
+		global duplicateMeshArray
+		duplicateMeshArray.append(dupeMeshName)
+		cmds.select(cl=1)
+	
+		cmds.skinCluster( jointName, mesh, tsb=True, mi=1)
+	cmds.select(cl=1)
+	print(duplicateMeshArray)
+	cmds.select(duplicateMeshArray)
+	cmds.group(n=dupMeshGroup)
+	
+	assetsLayer.append('base_j')
+	cmds.select(assetsLayer)
+	cmds.createDisplayLayer(nr=True, n=dlayNameA)
+	cmds.select(cl=True)
+	
+	cmds.select(duplicateMeshArray)
+	cmds.createDisplayLayer(nr=True, n=dlayNameB)
+	cmds.select(cl=True)
+	meshArray = []
+	duplicateMeshArray = []
+	assetsLayer = []
+	
+def constrainAndRigibody():
+    selectArray = cmds.ls( sl = True )
+
+    for mesh in selectArray:
+        origMeshName = str(mesh)
+        origMeshName = origMeshName.replace('D_', '')
+        print (origMeshName)
+        jointName = (origMeshName + "_j")
+        cmds.parentConstraint( mesh, jointName, mo = 1 )
+        
+        cmds.select(cl=1)
+        cmds.select(mesh)
+        cmds.rigidBody( active = 1)
+        cmds.select(cl=1)
+
+def basicGround():
+    cmds.polyPlane(name='Basic_Ground')
+    cmds.select('Basic_Ground')
+    cmds.rigidBody(active = False, passive = True)
+    cmds.select(cl=1)
+    
+def addGravity():
+    selectDupeArray()
+    gravInf= cmds.ls(sl=True)
+    cmds.select(cl=True)
+    cmds.gravity()
+    cmds.connectDynamic( gravInf, f= 'gravityField1')
+
+def addAir():
+    selectDupeArray()
+    airInf= cmds.ls(sl=True)
+    cmds.select(cl=True)
+    cmds.air()
+    cmds.connectDynamic( airInf, f= 'airField1')
+    
+
+def bakeDownAndFinishNewPackage():
+	#get its file name
+	fileName = cmds.file( q=True, sn=True )
+	print(fileName)
+	#save current file
+	cmds.file( save = True, type = 'mayaAscii')
+  
+	#bake the simulation
+	animStart = int(cmds.playbackOptions(q = True, minTime = True))
+	print(animStart)
+	animEnd = int(cmds.playbackOptions(q = True, maxTime = True))
+	print(animEnd)
+	#select all the joints before baking anim or sim
+	cmds.select(cmds.ls(type='joint'))
+	cmds.bakeResults(t=(animStart, animEnd), simulation=True)
+	#bakeFinish
+	#delete constraints
+	cmds.select('base_j')
+	#delete constraints
+	cmds.select(hi = True)
+	cmds.delete(cn = True)
+	#select everything for clearing
+	cmds.select(cmds.ls(tr = True))
+	#deselect what you want to save by selecting the assets layers objects
+	dontDelete= cmds.editDisplayLayerMembers( 'actual_assets', q=True )
+	cmds.select(dontDelete, d = True, ne = True)
+	cmds.delete()
+	cmds.select(cl=1)
+	#delete display layers
+	cmds.delete(cmds.ls(type = 'displayLayer'))
+	cmds.select(cl=1)
+ 
+	#select the mesh and rig for fbx save
+	cmds.select(cmds.ls(type='mesh'))
+	cmds.select(cmds.ls(type='joint'), add=True)
+	#save out the file as an fbx
+	cmds.file( force = True, options = "v=0;",type = "FBX export")
+  
+	#reopen the file to a point before the bake happened
+	cmds.file(fileName, f=True, o=True)
+
+    
+
+def bakeDownAndFinishNewAnimation():
+	#get its file name
+	fileName = cmds.file( q=True, sn=True )
+	print(fileName)
+	#save current file
+	cmds.file( save = True, type = 'mayaAscii')
+  
+	#bake the simulation
+	animStart = int(cmds.playbackOptions(q = True, minTime = True))
+	print(animStart)
+	animEnd = int(cmds.playbackOptions(q = True, maxTime = True))
+	print(animEnd)
+	#select all the joints before baking anim or sim
+	cmds.select(cmds.ls(type='joint'))
+	cmds.bakeResults(t=(animStart, animEnd), simulation=True)
+	#bakeFinish
+	#delete constraints
+	cmds.select('base_j')
+	#delete constraints
+	cmds.select(hi = True)
+	cmds.delete(cn = True)
+	#select everything for clearing
+	cmds.select(cmds.ls(tr = True))
+	#deselect what you want to save by selecting the assets layers objects
+	dontDelete= cmds.ls(type='joint')
+	cmds.select(dontDelete, d = True, ne = True)
+	cmds.delete()
+	cmds.select(cl=1)
+	#delete display layers
+	cmds.delete(cmds.ls(type = 'displayLayer'))
+	cmds.select(cl=1)
+ 
+	#select the mesh and rig for fbx save
+	cmds.select(cmds.ls(type='joint'), add=True)
+	#save out the file as an fbx
+	cmds.file( force = True, options = "v=0;",type = "FBX export")
+  
+	#reopen the file to a point before the bake happened
+	cmds.file(fileName, f=True, o=True)

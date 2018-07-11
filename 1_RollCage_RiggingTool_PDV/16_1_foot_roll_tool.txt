@@ -1,0 +1,130 @@
+string $frLocJointA = "L_ankle";
+vector $targetLocationA =`xform -q -ws -t $frLocJointA`;
+
+string $frLocJointB = "L_ball";
+vector $targetLocationB =`xform -q -ws -t $frLocJointB`;
+
+string $frLocJointC = "L_toe";
+vector $targetLocationC =`xform -q -ws -t $frLocJointC`;
+
+string $frLocJointD = "L_heel";
+vector $targetLocationD =`xform -q -ws -t $frLocJointD`;
+
+string $frIKHandle = "L_IK_handle";
+string $footRollCtlCurve = "L_foot_ctl";
+
+string $locA = "L_FR_ankle";
+string $locB = "L_FR_ball";
+string $locC = "L_FR_toe";
+string $locD = "L_FR_heel";
+
+string $footRollCtlGroup = ($footRollCtlCurve + "_group");
+
+
+CreateLocator;
+
+rename "locator1" $locA ;
+
+
+setAttr ( $locA + ".translateX" ) ($targetLocationA.x);
+setAttr ( $locA + ".translateY" ) ($targetLocationA.y);
+setAttr ( $locA + ".translateZ" ) ($targetLocationA.z);
+
+CreateLocator;
+
+rename "locator1" $locB ;
+
+
+setAttr ( $locB + ".translateX" ) ($targetLocationB.x);
+setAttr ( $locB + ".translateY" ) ($targetLocationB.y);
+setAttr ( $locB + ".translateZ" ) ($targetLocationB.z);
+
+CreateLocator;
+
+rename "locator1" $locC ;
+
+
+setAttr ( $locC + ".translateX" ) ($targetLocationC.x);
+setAttr ( $locC + ".translateY" ) ($targetLocationC.y);
+setAttr ( $locC + ".translateZ" ) ($targetLocationC.z);
+
+CreateLocator;
+
+rename "locator1" $locD ;
+
+
+setAttr ( $locD + ".translateX" ) ($targetLocationD.x);
+setAttr ( $locD + ".translateY" ) ($targetLocationD.y);
+setAttr ( $locD + ".translateZ" ) ($targetLocationD.z);
+
+select -r $frLocJointD;
+doDelete;
+select -cl;
+
+parent $locA $footRollCtlCurve ;
+
+parent $locB $footRollCtlCurve ;
+
+parent $locC $footRollCtlCurve ;
+
+parent $locD $footRollCtlCurve ;
+
+select -r $locA;
+FreezeTransformations;
+select -cl;
+select -r $locB;
+FreezeTransformations;
+select -cl;
+select -r $locC;
+FreezeTransformations;
+select -cl;
+select -r $locD;
+FreezeTransformations;
+select -cl;
+
+parent $locA $locB ;
+parent $locB $locC ;
+parent $locC $locD ;
+
+
+select -r $locC ;
+select -tgl $frLocJointC ;
+
+performParentConstraint 1;
+doCreateParentConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+parentConstraint -mo -weight 1;
+
+select -cl;
+
+select -r $locB ;
+select -tgl $frLocJointB ;
+
+performParentConstraint 1;
+doCreateParentConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+parentConstraint -mo -weight 1;
+
+select -cl;
+
+select -r $locA ;
+select -tgl $frLocJointA ;
+
+performOrientConstraint 1;
+doCreateOrientConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+orientConstraint -mo -weight 1;
+
+select -cl;
+
+select -r $locA ;
+select -tgl $frIKHandle ;
+
+performPointConstraint 1;
+doCreatePointConstraintArgList 1 { "1","0","0","0","0","0","0","1","","1" };
+pointConstraint -mo -weight 1;
+
+select -cl;
+
+
+setAttr ($locA + ".visibility") 0;
+setAttr ($locB + ".visibility") 0;
+setAttr ($locC + ".visibility") 0;
+setAttr ($locD + ".visibility") 0;
