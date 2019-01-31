@@ -33,6 +33,24 @@ from functools import partial
 
 newScriptEditorName = "ScriptEditor2"
 
+"""
+put a class here to define buttons and give a stored script location from the..
+maya scripts folder
+
+"""
+
+#so the best way it looks like to do this is to just store the variables in their object attrs..
+#.. and also call the button command with the connected attrs in the INIT and just leave..
+#.. a callback method to return the location of the script.
+class newButton (object):
+    def __init__(self, _label, _commandMeth, _width, _scriptLoc, *args):
+        self.scriptLoc = _scriptLoc
+        cmds.button(label = _label, command = _commandMeth, width = _width )
+    
+    def scriptLocCallback(self):
+        return self.scriptLoc
+
+
 
 """
 This is where I'm keeping my functions all together before running the rest of the script editor window
@@ -45,6 +63,7 @@ v v v
 #            I made the show var report instead since its a reporter and so it seems to fit thematically
 
 def echoAllCommandsSwitch():
+    
     return
 
 
