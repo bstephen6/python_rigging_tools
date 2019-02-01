@@ -1,7 +1,97 @@
 #quick broken FK/IK SwitchBlend Creator
 
 import maya.cmds as cmds
+import maya.mel as mel
 
+
+
+
+#------------------ Functions to be used ------------------------------
+
+
+# A function for making the sphere ctl curve
+def makeSphereCurve():
+    #create a circle on each axis
+    cmds.circle( n = ('temp_circle1'), nr=(0, 0, 1), c=(0, 0, 0), r = 17 )
+    cmds.circle( n = ('temp_circle2'), nr=(0, 1, 0), c=(0, 0, 0), r = 17 )
+    cmds.circle( n = ('temp_circle3'), nr=(1, 0, 0), c=(0, 0, 0), r = 17 )
+
+    #use a list real quick to hole the temp names
+    cParts = ['temp_circle1', 'temp_circle2', 'temp_circle3']
+    #make an empty list for the shapes to go in for the selection precombine
+    combineList =[]
+
+    # a little enumerate loop to grab the curve shapes and store em
+    for index, x in enumerate(cParts):
+        #if its the cirst curve which will be the parent object to the shapes
+        if index == 0:
+            #select it
+            cmds.select(x)
+            #store the name 
+            y = cmds.ls(sl=True)
+            #clear the selection
+            cmds.select(cl=True)
+
+            #add the selection to the list
+            combineList.append(y)
+
+        #for these two in the index I grab the underlying shape then..
+        # .. store it all the same
+        if index == 1:
+            cmds.select(x)
+            cmds.pickWalk(direction='down')
+            y = cmds.ls(sl=True)
+            print(y)
+            cmds.select(cl=True)
+            combineList.append(y)
+
+        if index == 2:
+            cmds.select(x)
+            cmds.pickWalk(direction='down')
+            y = cmds.ls(sl=True)
+            print(y)
+            cmds.select(cl=True)
+            combineList.append(y)
+    
+    #selection clear for good house keeping
+    cmds.select(cl=True)
+
+    #select the shapes and then then lastly chose the "containing" curve
+    cmds.select(combineList[1])
+    cmds.select(combineList[2], add = True)
+    cmds.select(combineList[0], add = True)
+    mel.eval('parent -r -s;')
+    cmds.select(cl=True)
+
+    #delete the extra empty transforms
+    cmds.delete(cParts[1])
+    cmds.delete(cParts[2])
+
+    #now just delete the construction history on the new curve and blamo its done
+    cmds.select(cl=True)
+    cmds.select('temp_circle1')
+    cmds.delete(ch=True)
+    cmds.select(cl=True)
+    cmds.rename('temp_circle1', 'temp_sphere1')
+    cmds.select(cl=True)
+        
+    
+
+
+
+
+#----------------------- end of Functions ---------------------------
+
+
+
+
+
+
+
+
+
+#------------------- tool code starts here -------------------------
+ 
 #make a selection array to store the joint chain selected
 sel = cmds.ls(sl=True)
 
@@ -77,12 +167,12 @@ cmds.makeIdentity(apply=True, t=1, r=1, s=1)
 cmds.select(cl=True)
 
 #store the position of the base joint of the the bind chain
-baseLoc = cmds.xform((str(sel[0])), q = 1, ws = 1, rp = 1)
+basePos = cmds.xform((str(sel[0])), q = 1, ws = 1, rp = 1)
 
 #change the rotate and scale pivots for both chain groups to the..
 #.. location of the base joint in the bind chain 
-cmds.xform(fkGrp, ws = True, sp = baseLoc, rp = baseLoc)
-cmds.xform(ikGrp, ws = True, sp = baseLoc, rp = baseLoc)
+cmds.xform(fkGrp, ws = True, sp = basePos, rp = basePos)
+cmds.xform(ikGrp, ws = True, sp = basePos, rp = basePos)
 
 #a healthy selection clearing for good house keeping
 cmds.select(cl=True)
@@ -99,9 +189,78 @@ pConst = cmds.ls(sl=True)
 cmds.parentConstraint( pConst, fkGrp, mo=True)
 cmds.parentConstraint( pConst, ikGrp, mo=True)
 
+#store a quick string names for the handle 
+ikN = (str(sel[2] + '_IK_handle'))
+ikS = (str(sel[0] + '_ik_driver'))
+ikE = (str(sel[2] + '_ik_driver'))
+
 #create the IK handle for the IK joint chain
+cmds.ikHandle(n= ikN, sj = ikS, ee = ikE, sol = 'ikRPsolver')
 
 #create ctl curves, spheres, that can be used to drive the fk chain and ik handle
+
+#lets use a loop to do that for the FK
+for index, x in enumerate(sel):
+    fkJointName = x + '_fk_driver'
+    fkCtlName = x + '_fk_ctl'
+    fkCtlGrp = x + '_fk_group' 
+
+    #call the make sphere curve function to pit out a 
+    makeSphereCurve()
+
+    #rename the sphere ctl curve to the new name for the fk chain
+    cmds.rename('temp_sphere1', fkCtlName)
+
+    #move the ctl to the joint location
+    #store location first
+    xPos = cmds.xform( x, q = True, ws = True, t = True)
+    
+    #then move the clt
+    cmds.xform( fkCtlName, ws=True, t= xPos )
+
+    #now group the ctl and move the group piv to the same position
+    cmds.group(n=fkCtlGrp, em=True)
+    cmds.xform(fkCtlGrp, ws = True, sp = xPos, rp = xPos)
+
+    #now parent the ctl(child) to the group(parent)
+    cmds.parent(fkCtlName, fkCtlGrp)
+    
+    #a just in case selection clearing for good house keeping
+    cmds.select(cl=True)
+    
+    #now match the group rotation with the joint orient
+    bindJointOrientX = cmds.getAttr(x + '.jointOrientX')
+    bindJointOrientY = cmds.getAttr(x + '.jointOrientY')
+    bindJointOrientZ = cmds.getAttr(x + '.jointOrientZ')
+
+    #now set the rotations values on the ctl group
+    cmds.setAttr(fkCtlGrp + '.rotateX', bindJointOrientX)
+    cmds.setAttr(fkCtlGrp + '.rotateY', bindJointOrientY)
+    cmds.setAttr(fkCtlGrp + '.rotateZ', bindJointOrientZ)
+
+    #now finally parent the ctls in a hierarchy that makes sense to
+    if index == 0:
+        print('index is 0, do nothing to see here')
+        continue
+    if index == 1:
+        try:
+            cmds.parent(fkCtlGrp, (str(sel[0] + '_fk_ctl')))
+        except:
+            print('Index is 1, but the parenting did not work for whatever reason (for the fk ctls)')
+            pass
+    if index == 2:
+        try:
+            cmds.parent(fkCtlGrp, (str(sel[1] + '_fk_ctl')))
+        except:
+            print('Index is 2, but the parenting did not work for whatever reason  (for the fk ctls)')
+            pass
+        
+    #
+
+
+
+
+
 
 #snap fk ctls to the corresponding joint locations (preferably through a loop)
 
