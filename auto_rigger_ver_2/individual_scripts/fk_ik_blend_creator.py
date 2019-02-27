@@ -10,8 +10,7 @@ import re
 
 
 #Create Visibilty Driven Keys
-#honestly this is super last second and  I can't think of anything else I could..
-#..need to add after this so It'll be a quick kitbash func without much commenting
+#it'll be a quick kitbash func without much commenting
 def visibilityDrivenKeys( _blendA, _blendB, _blendACtls, _blendBCtls, _attrCurve, _attrSize, *args):
     attrName = _blendA + '_' + _blendB + '_blend'
     blendAttr = _attrCurve + '.' + attrName
